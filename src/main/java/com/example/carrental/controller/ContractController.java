@@ -44,7 +44,6 @@ public class ContractController {
             return "redirect:/";
         }
 
-    private String siteAddContract(){
         return "home/newcontract";
     }
 

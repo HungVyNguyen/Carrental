@@ -29,7 +29,7 @@ public class CustomerController {
         if (!administratorService.checkCookie(passwd)) {
             return "redirect:/";
         }
-    public String newcustomer(){
+
         return "home/newCustomer";
     }
 

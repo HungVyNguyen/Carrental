@@ -14,14 +14,17 @@
 </header>
 
 <section class="add-car-section">
-    <div class="form-actions">
-    <table class="car-form-table">
-<section class="table-section">
-    <form action="/gotoContracts" method="GET">
-        <div>
+    <div class="button-container">
+        <form action="/gotoContracts" method="GET">
             <button type="submit" class="button">Create Contract</button>
-        </div>
-    </form>
+        </form>
+
+        <form action="/gotomenu" method="GET">
+            <button type="submit" class="button">Go to Menu</button>
+        </form>
+    </div>
+    <div class="form-actions">
+
 
     <table>
         <thead>
@@ -46,33 +49,28 @@
                     <input type="hidden" name="contract_id" th:value="${list.contract_id}">
                     <button type="submit" class="button">Edit</button>
                 </form>
-            </td>
-            <td>
-                <form action="/comfirmDelete" method="GET">
-                    <input type="hidden" name="contract_id" th:value="${list.contract_id}">
-                    <button type="submit" class="button">Delete</button>
-                    <button type="submit" class="button delete">Delete</button>
-                </form>
-            </td>
-            <td>
+
                 <form action="/showDamageReport" method="get">
                     <input type="hidden" name="contract_id" th:value="${list.contract_id}">
                     <input type="submit" value="Show damage report" class="button">
                 </form>
+
+                <form action="/comfirmDelete" method="GET">
+                    <input type="hidden" name="contract_id" th:value="${list.contract_id}">
+                    <button type="submit" class="button delete">Delete</button>
+                </form>
+
+
             </td>
         </tr>
         </tbody>
     </table>
-        <div class="button-container">
-        <form action="/gotoContracts" method="GET">
-            <button type="submit" class="button">Create Contract</button>
-        </form>
 
-        <form action="/gotomenu" method="GET">
-            <button type="submit" class="button">Go to Menu</button>
-        </form>
-</div>
-        </div>
+
+
+
+    </div>
+
 </section>
 
 </body>
