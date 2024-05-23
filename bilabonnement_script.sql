@@ -23,7 +23,7 @@ CREATE TABLE car (
     co2_emissions INT,
     image MEDIUMBLOB,
     administrator_id INT DEFAULT 1,
-    state ENUM('In storage', 'Being used', 'Under inspection'),
+    state ENUM('In storage', 'Being used', 'Under inspection', 'Out of commission'),
     PRIMARY KEY (car_id),
     FOREIGN KEY (administrator_id) REFERENCES administrator(administrator_id)
 );
@@ -33,7 +33,7 @@ CREATE TABLE car_image (
     image MEDIUMBLOB,
     car_id INT,
     PRIMARY KEY (car_image_id),
-    FOREIGN KEY (car_id) REFERENCES car(car_id)
+    FOREIGN KEY (car_id) REFERENCES car(car_id) ON DELETE CASCADE
 );
 
 CREATE TABLE equipment (
@@ -41,7 +41,7 @@ CREATE TABLE equipment (
     description VARCHAR(255),
     car_id INT,
     PRIMARY KEY (equipment_id),
-    FOREIGN KEY (car_id) REFERENCES car(car_id)
+    FOREIGN KEY (car_id) REFERENCES car(car_id) ON DELETE CASCADE
 );
 
 CREATE TABLE customer (
@@ -63,8 +63,8 @@ CREATE TABLE contract (
     contract_end DATE,
     price FLOAT,
     PRIMARY KEY (contract_id),
-    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-    FOREIGN KEY (car_id) REFERENCES car(car_id)
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY (car_id) REFERENCES car(car_id) ON DELETE CASCADE
 );
 
 CREATE TABLE damages (
@@ -73,5 +73,5 @@ CREATE TABLE damages (
     price FLOAT,
     contract_id INT,
     PRIMARY KEY (damages_id),
-    FOREIGN KEY (contract_id) REFERENCES contract(contract_id)
+    FOREIGN KEY (contract_id) REFERENCES contract(contract_id) ON DELETE CASCADE
 );

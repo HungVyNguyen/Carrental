@@ -16,6 +16,14 @@
 <section class="add-car-section">
     <div class="form-actions">
     <table class="car-form-table">
+<section class="table-section">
+    <form action="/gotoContracts" method="GET">
+        <div>
+            <button type="submit" class="button">Create Contract</button>
+        </div>
+    </form>
+
+    <table>
         <thead>
         <tr>
             <th><strong>Chassis Number</strong></th>
@@ -38,13 +46,20 @@
                     <input type="hidden" name="contract_id" th:value="${list.contract_id}">
                     <button type="submit" class="button">Edit</button>
                 </form>
+            </td>
+            <td>
                 <form action="/comfirmDelete" method="GET">
                     <input type="hidden" name="contract_id" th:value="${list.contract_id}">
                     <button type="submit" class="button">Delete</button>
+                    <button type="submit" class="button delete">Delete</button>
                 </form>
             </td>
-
-
+            <td>
+                <form action="/showDamageReport" method="get">
+                    <input type="hidden" name="contract_id" th:value="${list.contract_id}">
+                    <input type="submit" value="Show damage report" class="button">
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
